@@ -1,103 +1,146 @@
-import Image from "next/image";
+// app/page.jsx
+import BreakingNews from "@/components/BreakingNews";
+import NewsCard from "@/components/NewsCard";
+import CategorySection from "@/components/CategorySection";
+import TrendingNews from "@/components/TrendingNews";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const breakingNews = {
+    title:
+      "मोदी सरकार ने की नई शिक्षा नीति की घोषणा, अब 5वीं कक्षा तक मातृभाषा में शिक्षा अनिवार्य",
+    category: "राजनीति",
+    time: "2 घंटे पहले",
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const featuredNews = [
+    {
+      id: 1,
+      title: "चंद्रयान-4 मिशन की तैयारियां पूरी, इस साल होगा प्रक्षेपण",
+      excerpt:
+        "भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO) ने चंद्रयान-4 मिशन के लिए सभी तैयारियां पूरी कर ली हैं। इसरो चेयरमैन एस. सोमनाथ ने बताया कि यह मिशन इस साल के अंत तक लॉन्च किया जाएगा।",
+      category: "तकनीक",
+      date: "15 मई, 2023",
+      readTime: "4 मिनट",
+      image: "/tech.jpg",
+    },
+    {
+      id: 2,
+      title: "विम्बलडन में सानिया मिर्जा की जोड़ी ने जीता खिताब",
+      excerpt:
+        "भारतीय टेनिस स्टार सानिया मिर्जा ने अपने करियर के अंतिम विम्बलडन टूर्नामेंट में महिला युगल का खिताब जीत लिया है। सानिया और उनकी साथी ची यू-फान ने फाइनल में शीर्ष वरीयता प्राप्त जोड़ी को हराया।",
+      category: "खेल",
+      date: "14 मई, 2023",
+      readTime: "3 मिनट",
+      image: "/sports.jpg",
+    },
+    {
+      id: 3,
+      title: "बॉलीवुड में वापसी करेंगे शाहरुख खान, डॉन 3 में नजर आएंगे",
+      excerpt:
+        "सुपरस्टार शाहरुख खान अगले साल रिलीज होने वाली फिल्म डॉन 3 में वापसी करेंगे। फिल्म के निर्देशक फरहान अख्तर ने इसकी पुष्टि की है। फिल्म की शूटिंग इसी साल अक्टूबर में शुरू होगी।",
+      category: "मनोरंजन",
+      date: "13 मई, 2023",
+      readTime: "5 मिनट",
+      image: "/entertainment.jpg",
+    },
+  ];
+
+  const trendingNews = [
+    {
+      id: 1,
+      title: "महंगाई पर नियंत्रण के लिए RBI ने बढ़ाई रेपो दर",
+      rank: 1,
+    },
+    {
+      id: 2,
+      title: "उत्तराखंड में बादल फटने से 12 लोगों की मौत",
+      rank: 2,
+    },
+    {
+      id: 3,
+      title: "अमेरिकी राष्ट्रपति भारत दौरे पर आएंगे जुलाई में",
+      rank: 3,
+    },
+    {
+      id: 4,
+      title: "आईपीएल फाइनल: चेन्नई सुपर किंग्स बनाम गुजरात टाइटन्स",
+      rank: 4,
+    },
+  ];
+
+  return (
+    <div className="space-y-10">
+      <BreakingNews news={breakingNews} />
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+          <h2 className="hindi-heading text-2xl font-bold mb-6 pb-2 border-b border-gray-200 dark:border-gray-700 reading:border-amber-200">
+            प्रमुख समाचार
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featuredNews.map((news) => (
+              <NewsCard key={news.id} news={news} />
+            ))}
+          </div>
+
+          <CategorySection
+            title="राजनीति"
+            news={[
+              "केंद्र सरकार ने जम्मू-कश्मीर में पंचायत चुनावों की घोषणा की",
+              "ममता बनर्जी ने केंद्र सरकार पर लगाया TMC विधायकों को टारगेट करने का आरोप",
+              "उत्तर प्रदेश में योगी सरकार का बड़ा फैसला, अब हर जिले में बनेगा मेडिकल कॉलेज",
+            ]}
+          />
+
+          <CategorySection
+            title="व्यापार"
+            news={[
+              "रिलायंस ने लॉन्च किया नया 5G स्मार्टफोन, कीमत सिर्फ 8,999 रुपये",
+              "एडानी ग्रुप ने विदेशों में बढ़ाई निवेश की योजना",
+              "शेयर बाजार में तेजी, सेंसेक्स 800 अंक ऊपर",
+            ]}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <div className="lg:col-span-1">
+          <TrendingNews news={trendingNews} />
+
+          <div className="bg-gradient-to-br from-primary to-secondary p-6 rounded-xl text-white mb-8">
+            <h3 className="hindi-heading text-xl font-bold mb-4">
+              न्यूज़लेटर सदस्यता
+            </h3>
+            <p className="mb-4">दैनिक समाचार अपने इनबॉक्स में प्राप्त करें</p>
+            <div className="space-y-3">
+              <input
+                type="text"
+                placeholder="आपका नाम"
+                className="w-full px-4 py-2 rounded text-gray-900"
+              />
+              <input
+                type="email"
+                placeholder="आपका ईमेल"
+                className="w-full px-4 py-2 rounded text-gray-900"
+              />
+              <button className="w-full bg-white text-primary font-bold py-2 rounded hover:bg-gray-100 transition-colors">
+                सदस्यता लें
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-gray-100 dark:bg-gray-800 reading:bg-amber-50 p-6 rounded-xl">
+            <h3 className="hindi-heading text-xl font-bold mb-4">
+              आज का विचार
+            </h3>
+            <div className="text-center italic p-4 border-l-4 border-primary bg-white dark:bg-gray-900 reading:bg-amber-100 rounded-r">
+              <p className="text-lg">
+                "सफलता वह नहीं जो आपके पास है, बल्कि वह है जो आप हैं।"
+              </p>
+              <p className="mt-2">- डॉ. ए.पी.जे. अब्दुल कलाम</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

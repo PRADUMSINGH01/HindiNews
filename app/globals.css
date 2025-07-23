@@ -1,26 +1,100 @@
-@import "tailwindcss";
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme */
+  --color-primary: 220, 38, 38;
+  --color-primary-dark: 185, 28, 28;
+  --color-secondary: 234, 88, 12;
+  --color-secondary-dark: 194, 65, 12;
+  --color-background-light: 255, 255, 255;
+  --color-background-dark: 23, 23, 23;
+  --color-background-reading: 253, 245, 230;
+  --color-text-light: 38, 38, 38;
+  --color-text-dark: 245, 245, 245;
+  --color-text-reading: 92, 60, 20;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    font-family: "Hind", sans-serif;
+    line-height: 1.7;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .reading body {
+    font-family: "Noto Sans Devanagari", sans-serif;
+    line-height: 1.8;
+    font-size: 18px;
+  }
+
+  .font-sans {
+    font-family: "Hind", sans-serif;
+  }
+
+  .bg-background-light {
+    background-color: rgb(var(--color-background-light));
+  }
+
+  .bg-background-dark {
+    background-color: rgb(var(--color-background-dark));
+  }
+
+  .bg-background-reading {
+    background-color: rgb(var(--color-background-reading));
+  }
+
+  .text-text-light {
+    color: rgb(var(--color-text-light));
+  }
+
+  .text-text-dark {
+    color: rgb(var(--color-text-dark));
+  }
+
+  .text-text-reading {
+    color: rgb(var(--color-text-reading));
+  }
+
+  .bg-primary {
+    background-color: rgb(var(--color-primary));
+  }
+
+  .hover\:bg-primary-dark:hover {
+    background-color: rgb(var(--color-primary-dark));
+  }
+
+  .border-primary {
+    border-color: rgb(var(--color-primary));
+  }
+
+  .reading article {
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  .reading article h1,
+  .reading article h2,
+  .reading article h3 {
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .reading article p {
+    margin-bottom: 1.8rem;
+    text-align: justify;
+  }
+
+  .reading .article-content {
+    font-size: 1.1rem;
+  }
+
+  .hindi-heading {
+    font-family: "Noto Sans Devanagari", sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+  }
 }
